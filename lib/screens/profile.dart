@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:yundiao_phone/util/data.dart';
 
@@ -10,25 +11,53 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   static Random random = Random();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 10),
+//        padding: EdgeInsets.symmetric(horizontal: 10),
         child: Container(
           width: MediaQuery.of(context).size.width,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-
               SizedBox(height: 40),
-              CircleAvatar(
-                backgroundImage: AssetImage(
-                  "assets/cm${random.nextInt(10)}.jpeg",
+              Container(
+                padding: EdgeInsets.only(left: 20, right: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        CircleAvatar(
+                          backgroundImage: AssetImage(
+                            "assets/cm${random.nextInt(10)}.jpeg",
+                          ),
+                          radius: 50,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text('云貂'),
+                            Text('15555555555'),
+                          ],
+                        )
+                      ],
+                    ),
+                    RaisedButton(
+                      onPressed: () {
+                        print('提现');
+                      },
+                      child: Text('提现'),
+                    )
+                  ],
                 ),
-                radius: 50,
               ),
+
+              // 头部,头像,个人信息
+
               SizedBox(height: 10),
               Text(
                 names[random.nextInt(10)],
@@ -41,8 +70,7 @@ class _ProfileState extends State<Profile> {
 
               Text(
                 "Status should be here",
-                style: TextStyle(
-                ),
+                style: TextStyle(),
               ),
               SizedBox(height: 20),
               Row(
@@ -54,7 +82,7 @@ class _ProfileState extends State<Profile> {
                       color: Colors.white,
                     ),
                     color: Colors.grey,
-                    onPressed: (){},
+                    onPressed: () {},
                   ),
                   SizedBox(width: 10),
                   FlatButton(
@@ -63,9 +91,8 @@ class _ProfileState extends State<Profile> {
                       color: Colors.white,
                     ),
                     color: Theme.of(context).accentColor,
-                    onPressed: (){},
+                    onPressed: () {},
                   ),
-
                 ],
               ),
 
@@ -87,12 +114,10 @@ class _ProfileState extends State<Profile> {
                         SizedBox(height: 4),
                         Text(
                           "Posts",
-                          style: TextStyle(
-                          ),
+                          style: TextStyle(),
                         ),
                       ],
                     ),
-
                     Column(
                       children: <Widget>[
                         Text(
@@ -105,12 +130,10 @@ class _ProfileState extends State<Profile> {
                         SizedBox(height: 4),
                         Text(
                           "Friends",
-                          style: TextStyle(
-                          ),
+                          style: TextStyle(),
                         ),
                       ],
                     ),
-
                     Column(
                       children: <Widget>[
                         Text(
@@ -123,12 +146,10 @@ class _ProfileState extends State<Profile> {
                         SizedBox(height: 4),
                         Text(
                           "Groups",
-                          style: TextStyle(
-                          ),
+                          style: TextStyle(),
                         ),
                       ],
                     ),
-
                   ],
                 ),
               ),

@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:yundiao_phone/screens/main_screen.dart';
-import 'package:yundiao_phone/util/const.dart';
+import 'package:yundiao_phone/util/color_utils.dart';
 
-
-void main() async{
+void main() async {
   runApp(MyApp());
 }
-
 
 class MyApp extends StatefulWidget {
   @override
@@ -22,20 +20,18 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: isDark ? Constants.darkPrimary : Constants.lightPrimary,
-      statusBarIconBrightness: isDark?Brightness.light:Brightness.dark,
+      statusBarColor: isDark ? ColorUtils.darkPrimary : ColorUtils.lightPrimary,
+      statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
     ));
   }
-
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: Constants.appName,
-      theme: isDark ? Constants.darkTheme : Constants.lightTheme,
+      title: ColorUtils.appName,
+      theme: isDark ? ColorUtils.darkTheme : ColorUtils.lightTheme,
       home: MainScreen(),
     );
   }
 }
-

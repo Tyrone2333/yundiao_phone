@@ -15,6 +15,8 @@ class _MainScreenState extends State<MainScreen> {
   PageController _pageController;
   int _page = 2;
 
+  // 底部图标大小
+  double navigationBarSize = 20;
   @override
   Widget build(BuildContext context) {
 
@@ -76,8 +78,13 @@ class _MainScreenState extends State<MainScreen> {
             ),
 
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.person,
+              icon: Image.asset(
+                'assets/img/footer_4.png',
+                width: navigationBarSize,
+              ),
+              activeIcon: Image.asset(
+                'assets/img/footer_4_on.png',
+                width: navigationBarSize,
               ),
               title: Container(height: 0.0),
             ),
