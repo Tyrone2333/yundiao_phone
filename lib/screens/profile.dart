@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:yundiao_phone/util/data.dart';
+import 'package:yundiao_phone/widgets/anim_bg_demo_page.dart';
 import 'package:yundiao_phone/widgets/argon_buttons_flutter.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:yundiao_phone/widgets/rounded_loading_button.dart';
@@ -30,6 +31,12 @@ class _ProfileState extends State<Profile> {
 
 
   }
+  onBottom(Widget child) => Positioned.fill(
+    child: Align(
+      alignment: Alignment.bottomCenter,
+      child: child,
+    ),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -43,10 +50,44 @@ class _ProfileState extends State<Profile> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               SizedBox(height: 40),
-//              Container(
-//                child:
-//
-//              ),
+              Container(
+                width: 350,
+                height: 350,
+                child:
+                Stack(
+                  children: <Widget>[
+                    Positioned.fill(child: AnimatedBackground()),
+                    onBottom(AnimatedWave(
+                      height: 180,
+                      speed: 1.0,
+                    )),
+                    onBottom(AnimatedWave(
+                      height: 120,
+                      speed: 0.9,
+                      offset: pi,
+                    )),
+                    onBottom(AnimatedWave(
+                      height: 220,
+                      speed: 1.2,
+                      offset: pi / 2,
+                    )),
+                    Positioned.fill(
+                      child: new Center(
+                        child: new Text(
+                          "GSY Flutter Demo",
+                          style: new TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+
+
               RoundedLoadingButton(
                 child: Text('Tap me!', style: TextStyle(color: Colors.white)),
                 controller: _btnController,
