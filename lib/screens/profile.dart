@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:yundiao_phone/util/data.dart';
+import 'package:yundiao_phone/widgets/argon_buttons_flutter.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -24,6 +26,41 @@ class _ProfileState extends State<Profile> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               SizedBox(height: 40),
+//              Container(
+//                child:
+//
+//              ),
+              ArgonButton(
+                  height: 50,
+                  width: 300,
+                  borderRadius: 5.0,
+                  color: Color(0xFF7866FE),
+                  child: Text(
+                    "Continue",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700),
+                  ),
+                  loader: Container(
+                    padding: EdgeInsets.all(10),
+                    child: SpinKitDoubleBounce(
+                      color: Colors.white,
+                    ),
+                  ),
+                  onTap: (startLoading, stopLoading, btnState) async {
+                    print( random);
+                    if (btnState == ButtonState.Idle) {
+                      startLoading();
+//                      await doNetworkRequest();
+                      // 延时1s执行返回
+                      await Future.delayed(Duration(seconds: 2), () {
+//                        Navigator.of(context).pop();
+                        print('延时1s执行');
+                      });
+                      stopLoading();
+                    }
+                  }),
               Container(
                 padding: EdgeInsets.only(left: 20, right: 15),
                 child: Row(
@@ -37,12 +74,15 @@ class _ProfileState extends State<Profile> {
                           ),
                           radius: 50,
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text('云貂'),
-                            Text('15555555555'),
-                          ],
+                        Container(
+                          padding: EdgeInsets.only(left: 12),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text('云貂'),
+                              Text('15555555555'),
+                            ],
+                          ),
                         )
                       ],
                     ),
