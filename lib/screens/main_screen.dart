@@ -13,13 +13,19 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   PageController _pageController;
-  int _page = 2;
+  int _page = 4;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController(initialPage: _page);
+  }
 
   // 底部图标大小
   double navigationBarSize = 20;
+
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: PageView(
         physics: NeverScrollableScrollPhysics(),
@@ -33,18 +39,15 @@ class _MainScreenState extends State<MainScreen> {
           Profile(),
         ],
       ),
-
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
           // sets the background color of the `BottomNavigationBar`
           canvasColor: Theme.of(context).primaryColor,
           // sets the active color of the `BottomNavigationBar` if `Brightness` is light
           primaryColor: Theme.of(context).accentColor,
-          textTheme: Theme
-              .of(context)
-              .textTheme
-              .copyWith(caption: TextStyle(color: Colors.grey[500]),
-          ),
+          textTheme: Theme.of(context).textTheme.copyWith(
+                caption: TextStyle(color: Colors.grey[500]),
+              ),
         ),
         child: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
@@ -55,28 +58,24 @@ class _MainScreenState extends State<MainScreen> {
               ),
               title: Container(height: 0.0),
             ),
-
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.group,
               ),
               title: Container(height: 0.0),
             ),
-
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.home,
               ),
               title: Container(height: 0.0),
             ),
-
             BottomNavigationBarItem(
               icon: IconBadge(
                 icon: Icons.notifications,
               ),
               title: Container(height: 0.0),
             ),
-
             BottomNavigationBarItem(
               icon: Image.asset(
                 'assets/img/footer_4.png',
@@ -93,18 +92,11 @@ class _MainScreenState extends State<MainScreen> {
           currentIndex: _page,
         ),
       ),
-
     );
   }
 
   void navigationTapped(int page) {
     _pageController.jumpToPage(page);
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _pageController = PageController(initialPage: 2);
   }
 
   @override

@@ -1,10 +1,11 @@
 import 'dart:math';
-
+import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:yundiao_phone/util/data.dart';
 import 'package:yundiao_phone/widgets/argon_buttons_flutter.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:yundiao_phone/widgets/rounded_loading_button.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -13,6 +14,22 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   static Random random = Random();
+
+  final RoundedLoadingButtonController _btnController = new RoundedLoadingButtonController();
+
+  void _doSomething() async {
+    Timer(Duration(seconds: 1), () {
+      _btnController.success();
+
+      Timer(Duration(seconds: 1), () {
+//        _btnController. stop();
+
+
+      });
+    });
+
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +47,11 @@ class _ProfileState extends State<Profile> {
 //                child:
 //
 //              ),
+              RoundedLoadingButton(
+                child: Text('Tap me!', style: TextStyle(color: Colors.white)),
+                controller: _btnController,
+                onPressed: _doSomething,
+              ),
               ArgonButton(
                   height: 50,
                   width: 300,
