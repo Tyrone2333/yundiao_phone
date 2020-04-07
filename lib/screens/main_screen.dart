@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 import 'package:yundiao_phone/screens/chats.dart';
 import 'package:yundiao_phone/screens/friends.dart';
 import 'package:yundiao_phone/screens/home.dart';
 import 'package:yundiao_phone/screens/notifications.dart';
-import 'package:yundiao_phone/screens/profile.dart';
+import 'package:yundiao_phone/screens/profile/profile.dart';
 import 'package:yundiao_phone/widgets/icon_badge.dart';
 
 class MainScreen extends StatefulWidget {
@@ -26,6 +27,12 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    //填入设计稿中设备的屏幕尺寸
+
+    //默认 width : 1080px , height:1920px , allowFontScaling:false
+    //设置字体大小根据系统的“字体大小”辅助选项来进行缩放,默认为false
+    ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: true);
+
     return Scaffold(
       body: PageView(
         physics: NeverScrollableScrollPhysics(),

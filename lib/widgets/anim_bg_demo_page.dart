@@ -10,8 +10,7 @@ class AnimBgDemoPage extends StatelessWidget {
       appBar: AppBar(
         title: new Text("AnimBgDemoPage"),
       ),
-      body:
-      Stack(
+      body: Stack(
         children: <Widget>[
           Positioned.fill(child: AnimatedBackground()),
           onBottom(AnimatedWave(
@@ -117,9 +116,13 @@ class AnimatedBackground extends StatelessWidget {
   Widget build(BuildContext context) {
     final tween = MultiTrackTween([
       Track("color1").add(Duration(seconds: 3),
-          ColorTween(begin: Color(0xffD38312), end: Colors.lightBlue.shade900)),
+          ColorTween(begin: Color(0xfffe7e2e), end: Color(0x99fe7e2e))),
       Track("color2").add(Duration(seconds: 3),
-          ColorTween(begin: Color(0xffA83279), end: Colors.blue.shade600))
+          ColorTween(begin: Color(0xfffe7e2e), end: Color(0x99fe7e2e))),
+//    ColorTween(begin: Color(0xffA83279), end: Colors.blue.shade600))
+
+//      Track("color2").add(Duration(seconds: 3),
+//          ColorTween(begin: Color(0xffA83279), end: Colors.blue.shade600))
     ]);
 
     return ControlledAnimation(
