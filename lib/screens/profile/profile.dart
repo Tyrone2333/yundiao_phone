@@ -43,7 +43,17 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     print(ScreenUtil.statusBarHeight);
 
+    var navList = [
+      {'icon': "assets/img/user/nav1.png", 'text': '接单盈利'},
+      {'icon': "assets/img/user/nav2.png", 'text': '我的订单'},
+      {'icon': "assets/img/user/nav3.png", 'text': '账户设置'},
+      {'icon': "assets/img/user/nav4.png", 'text': '财务管理'},
+      {'icon': "assets/img/user/nav5.png", 'text': '我的客服'},
+    ];
     return Scaffold(
+//      appBar: AppBar(
+//        title: new Text("AnimBgDemoPage"),
+//      ),
       body: SingleChildScrollView(
 //        padding: EdgeInsets.symmetric(horizontal: 10),
         child: Container(
@@ -73,6 +83,19 @@ class _ProfileState extends State<Profile> {
                       speed: 1.2,
                       offset: pi / 2,
                     )),
+                    // 绝对定位的齿轮
+                    Positioned(
+                      // 设 top 会有状态栏的高度
+                      bottom: ScreenUtil().setHeight(240),
+                      right: ScreenUtil().setWidth(30),
+                      child: new Container(
+                        child: new Icon(
+                          Icons.settings,
+                          size: ScreenUtil().setWidth(40),
+                          color: ColorUtils.lightPrimary,
+                        ),
+                      ),
+                    ),
                     Positioned(
 //                      top: ScreenUtil().setHeight(150),
                       bottom: ScreenUtil().setHeight(80),
@@ -101,10 +124,7 @@ class _ProfileState extends State<Profile> {
                                   padding: EdgeInsets.only(left: 12),
                                   // 如果要继承文本样式
                                   child: DefaultTextStyle(
-                                    style: TextStyle(
-                                      fontSize: ScreenUtil().setSp(28),
-                                      color: ColorUtils.lightPrimary,
-                                    ),
+                                    style: styles['textFFF28'],
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
@@ -139,7 +159,7 @@ class _ProfileState extends State<Profile> {
                               child: Text(
                                 "提现",
                                 style: TextStyle(
-                                  color: ColorUtils.lightAccent,
+                                  color: Theme.of(context).accentColor,
                                   fontSize: ScreenUtil().setSp(28),
                                 ),
                               ),
@@ -162,6 +182,56 @@ class _ProfileState extends State<Profile> {
                 ),
               ),
 
+              Container(
+                padding:
+                    EdgeInsets.symmetric(vertical: ScreenUtil().setWidth(26)),
+                color: Theme.of(context).accentColor,
+                child: DefaultTextStyle(
+                  style: styles['textFFF28'],
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      Column(
+                        children: <Widget>[
+                          Text(
+                            random.nextInt(10000).toString(),
+                            style: TextStyle(
+                              fontSize: ScreenUtil().setSp(34),
+                            ),
+                          ),
+                          SizedBox(height: 4),
+                          Text("可用金额"),
+                        ],
+                      ),
+                      Column(
+                        children: <Widget>[
+                          Text(
+                            random.nextInt(10000).toString(),
+                            style: TextStyle(
+                              fontSize: ScreenUtil().setSp(34),
+                            ),
+                          ),
+                          SizedBox(height: 4),
+                          Text("冻结金额"),
+                        ],
+                      ),
+                      Column(
+                        children: <Widget>[
+                          Text(
+                            random.nextInt(10000).toString(),
+                            style: TextStyle(
+                              fontSize: ScreenUtil().setSp(34),
+                            ),
+                          ),
+                          SizedBox(height: 4),
+                          Text("可提现金额"),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
               // 按钮变✔
               RoundedLoadingButton(
                 child: Text('Tap me!', style: TextStyle(color: Colors.white)),
@@ -171,151 +241,95 @@ class _ProfileState extends State<Profile> {
 
               // 可做登录
               ArgonButton(
-                  height: 50,
-                  width: 300,
-                  borderRadius: 5.0,
-                  color: Color(0xFF7866FE),
-                  child: Text(
-                    "Continue",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700),
-                  ),
-                  loader: Container(
-                    padding: EdgeInsets.all(10),
-                    child: SpinKitDoubleBounce(
+                height: 50,
+                width: 300,
+                borderRadius: 5.0,
+                color: Color(0xFF7866FE),
+                child: Text(
+                  "Continue",
+                  style: TextStyle(
                       color: Colors.white,
-                    ),
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700),
+                ),
+                loader: Container(
+                  padding: EdgeInsets.all(10),
+                  child: SpinKitDoubleBounce(
+                    color: Colors.white,
                   ),
-                  onTap: (startLoading, stopLoading, btnState) async {
-                    if (btnState == ButtonState.Idle) {
-                      startLoading();
+                ),
+                onTap: (startLoading, stopLoading, btnState) async {
+                  if (btnState == ButtonState.Idle) {
+                    startLoading();
 //                      await doNetworkRequest();
-                      // 延时1s执行返回
-                      await Future.delayed(Duration(seconds: 2), () {
+                    // 延时1s执行返回
+                    await Future.delayed(Duration(seconds: 2), () {
 //                        Navigator.of(context).pop();
-                        print('延时1s执行');
-                      });
-                      stopLoading();
-                    }
-                  }),
-
-              SizedBox(height: 10),
-              Text(
-                names[random.nextInt(10)],
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 22,
-                ),
-              ),
-              SizedBox(height: 3),
-
-              Text(
-                "Status should be here",
-                style: TextStyle(),
-              ),
-              SizedBox(height: 20),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  FlatButton(
-                    child: Icon(
-                      Icons.message,
-                      color: Colors.white,
-                    ),
-                    color: Colors.grey,
-                    onPressed: () {},
-                  ),
-                  SizedBox(width: 10),
-                  FlatButton(
-                    child: Icon(
-                      Icons.add,
-                      color: Colors.white,
-                    ),
-                    color: Theme.of(context).accentColor,
-                    onPressed: () {},
-                  ),
-                ],
-              ),
-
-              SizedBox(height: 40),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 50),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Column(
-                      children: <Widget>[
-                        Text(
-                          random.nextInt(10000).toString(),
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 22,
-                          ),
-                        ),
-                        SizedBox(height: 4),
-                        Text(
-                          "Posts",
-                          style: TextStyle(),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: <Widget>[
-                        Text(
-                          random.nextInt(10000).toString(),
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 22,
-                          ),
-                        ),
-                        SizedBox(height: 4),
-                        Text(
-                          "Friends",
-                          style: TextStyle(),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: <Widget>[
-                        Text(
-                          random.nextInt(10000).toString(),
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 22,
-                          ),
-                        ),
-                        SizedBox(height: 4),
-                        Text(
-                          "Groups",
-                          style: TextStyle(),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 20),
-              GridView.builder(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                primary: false,
-                padding: EdgeInsets.all(5),
-                itemCount: 15,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  childAspectRatio: 200 / 200,
-                ),
-                itemBuilder: (BuildContext context, int index) {
-                  return Padding(
-                    padding: EdgeInsets.all(5.0),
-                    child: Image.asset(
-                      "assets/cm${random.nextInt(10)}.jpeg",
-                      fit: BoxFit.cover,
-                    ),
-                  );
+                      print('延时1s执行');
+                    });
+                    stopLoading();
+                  }
                 },
+              ),
+
+              SizedBox(height: 20),
+
+              // build
+              Container(
+//                color: Color(0xffF3F3F3),
+                decoration: BoxDecoration(
+                  color: Color(0xffF3F3F3),
+//                  gradient: RadialGradient(colors: [
+//                    Colors.grey[800],
+//                    Colors.black,
+//                  ], radius: 0.85, focal: Alignment.center),
+                ),
+                child: GridView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  primary: false,
+                  padding: EdgeInsets.all(0),
+                  itemCount: 6,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisSpacing: 1,
+                    mainAxisSpacing: 1,
+                    crossAxisCount: 3,
+                    childAspectRatio: ScreenUtil().setWidth(250) /
+                        ScreenUtil().setHeight(190),
+                  ),
+                  itemBuilder: (BuildContext context, int index) {
+                    // dart 获取超过数组长度会报错,超过了就返回一个空白容器,不然会把背景的灰色露出来
+                    var len = navList.length;
+                    var nav = len - 1 >= index ? navList[index] : null;
+                    if (nav == null) {
+                      return Container(color: Color(0xffffffff));
+                    }
+                    // 每一个卡片
+                    return Container(
+                      color: Color(0xffffffff),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Image.asset(
+                            nav['icon'],
+                            width: ScreenUtil().setWidth(48),
+                            height: ScreenUtil().setWidth(48),
+                            fit: BoxFit.cover,
+                          ),
+                          SizedBox(height: ScreenUtil().setHeight(20)),
+                          Text(
+                            nav['text'],
+                            style: TextStyle(
+                              fontSize: ScreenUtil().setSp(30),
+                              color: Color(0xff888888),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
               ),
             ],
           ),
@@ -324,3 +338,11 @@ class _ProfileState extends State<Profile> {
     );
   }
 }
+
+// 要共用样式
+var styles = {
+  'textFFF28': TextStyle(
+    fontSize: ScreenUtil().setSp(28),
+    color: ColorUtils.lightPrimary,
+  ),
+};
