@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/screenutil.dart';
 import 'package:yundiao_phone/screens/chats.dart';
 import 'package:yundiao_phone/screens/friends.dart';
 import 'package:yundiao_phone/screens/home.dart';
+import 'package:yundiao_phone/screens/login.dart';
 import 'package:yundiao_phone/screens/notifications.dart';
 import 'package:yundiao_phone/screens/profile.dart';
 import 'package:yundiao_phone/widgets/icon_badge.dart';
@@ -42,8 +43,9 @@ class _MainScreenState extends State<MainScreen> {
           Chats(),
           Friends(),
           Home(),
-          Notifications(),
+//          Notifications(),
           Profile(),
+          Login(),
         ],
       ),
       bottomNavigationBar: Theme(

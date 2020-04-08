@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil.dart';
+import 'package:yundiao_phone/screens/login.dart';
 import 'package:yundiao_phone/util/Constants.dart';
 import 'package:yundiao_phone/util/color_utils.dart';
 import 'package:yundiao_phone/util/data.dart';
@@ -28,6 +29,13 @@ class _ProfileState extends State<Profile> {
 
   handleLogout() {
     print('handleLogout');
+    Navigator.of(context, rootNavigator: true).push(
+      MaterialPageRoute(
+        builder: (BuildContext context){
+          return Login();
+        },
+      ),
+    );
   }
 
   @override

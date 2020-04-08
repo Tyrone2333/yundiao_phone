@@ -57,8 +57,10 @@ flutter:
     - assets/cm8.jpeg
     - assets/cm9.jpeg
     - assets/cm0.jpeg
+    # 仅包括直接位于目录中的文件。要添加位于子目录中的文件，请在每个目录中创建一个条目。
     - assets/img/
     - assets/img/user/
+    - assets/img/login/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
