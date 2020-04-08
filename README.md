@@ -76,3 +76,9 @@ Container(
 4. 执行 `flutter build apk -v`,打包好的发布APK位于 <app dir>/build/app/outputs/apk/app-release.apk
 5. 执行 flutter install 安装
 
+
+# url schema
+
+```
+adb shell am start -W -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d "yundiao://yundiao.com/home?pp=big&uid=123&token=abc"
+```
