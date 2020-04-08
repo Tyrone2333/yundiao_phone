@@ -79,6 +79,7 @@ Container(
 
 # url schema
 
+不同终端的元字符不同, cmd 中 `&` 就需要转义,执行下面的命令可以拉起app,但是只能接收到 `{pp: [big], uid: [123]}`,第三个参数没有传入
 ```
-adb shell am start -W -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d "yundiao://yundiao.com/home?pp=big&uid=123&token=abc"
+adb shell am start -W -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d "yundiao://yundiao.com/home?pp=big\&uid=123&token=abc"
 ```

@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
 
   StreamSubscription _sub;
 
-  UniLinksType _type = UniLinksType.string;
+  UniLinksType _type = UniLinksType.uri;
 
 
   @override
@@ -127,6 +127,8 @@ class _MyAppState extends State<MyApp> {
 
     // Attach a second listener to the stream
     getUriLinksStream().listen((Uri uri) {
+      print(uri?.queryParametersAll['pp']);
+
       print('获取到 uri: ${uri?.path} ${uri?.queryParametersAll}');
     }, onError: (err) {
       print('got err: $err');
