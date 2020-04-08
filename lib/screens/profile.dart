@@ -19,25 +19,16 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   static Random random = Random();
 
-  final RoundedLoadingButtonController _btnController =
-      new RoundedLoadingButtonController();
-
-  void _doSomething() async {
-    Timer(Duration(seconds: 1), () {
-      _btnController.success();
-
-      Timer(Duration(seconds: 1), () {
-//        _btnController. stop();
-      });
-    });
-  }
-
   onBottom(Widget child) => Positioned.fill(
         child: Align(
           alignment: Alignment.bottomCenter,
           child: child,
         ),
       );
+
+  handleLogout() {
+    print('handleLogout');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,14 +46,16 @@ class _ProfileState extends State<Profile> {
 //        title: new Text("AnimBgDemoPage"),
 //      ),
       body: SingleChildScrollView(
-//        padding: EdgeInsets.symmetric(horizontal: 10),
         child: Container(
+          color: Color(0xFFf3f3f3),
           width: MediaQuery.of(context).size.width,
+
+//          height: double.infinity, // <-----
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-//              SizedBox(height: 40),
+              // 头部
               Container(
                 width: ScreenUtil().setWidth(750),
                 height: ScreenUtil().setHeight(350),
@@ -182,6 +175,7 @@ class _ProfileState extends State<Profile> {
                 ),
               ),
 
+              // 可用金额等
               Container(
                 padding:
                     EdgeInsets.symmetric(vertical: ScreenUtil().setWidth(26)),
@@ -232,51 +226,10 @@ class _ProfileState extends State<Profile> {
                 ),
               ),
 
-              // 按钮变✔
-              RoundedLoadingButton(
-                child: Text('Tap me!', style: TextStyle(color: Colors.white)),
-                controller: _btnController,
-                onPressed: _doSomething,
-              ),
-
-              // 可做登录
-              ArgonButton(
-                height: 50,
-                width: 300,
-                borderRadius: 5.0,
-                color: Color(0xFF7866FE),
-                child: Text(
-                  "Continue",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700),
-                ),
-                loader: Container(
-                  padding: EdgeInsets.all(10),
-                  child: SpinKitDoubleBounce(
-                    color: Colors.white,
-                  ),
-                ),
-                onTap: (startLoading, stopLoading, btnState) async {
-                  if (btnState == ButtonState.Idle) {
-                    startLoading();
-//                      await doNetworkRequest();
-                    // 延时1s执行返回
-                    await Future.delayed(Duration(seconds: 2), () {
-//                        Navigator.of(context).pop();
-                      print('延时1s执行');
-                    });
-                    stopLoading();
-                  }
-                },
-              ),
-
-              SizedBox(height: 20),
-
               // build
               Container(
 //                color: Color(0xffF3F3F3),
+                padding: EdgeInsets.only(top: ScreenUtil().setHeight(20)),
                 decoration: BoxDecoration(
                   color: Color(0xffF3F3F3),
 //                  gradient: RadialGradient(colors: [
@@ -331,6 +284,36 @@ class _ProfileState extends State<Profile> {
                   },
                 ),
               ),
+
+              // todo 底部要占满
+              // 退出
+              GestureDetector(
+                onTap: handleLogout,
+                child: Container(
+                  width: ScreenUtil().setWidth(750),
+                  height: ScreenUtil().setHeight(90),
+                  color: Colors.white,
+                  margin: EdgeInsets.only(top: ScreenUtil().setHeight(60)),
+                  child: Center(
+                    child: Text(
+                      '安全退出',
+                      style: TextStyle(
+                          fontSize: ScreenUtil().setSp(30),
+                          color: Color(0xff333333)),
+                    ),
+                  ),
+                ),
+              ),
+
+//              SizedBox.expand(
+//                child: Container(
+//                  color: Colors.black,
+//                  child: Image(
+//                    fit: BoxFit.fitHeight,
+//                    image: NetworkImage(Constants.defaultAvatar),
+//                  ),
+//                ),
+//              ),
             ],
           ),
         ),

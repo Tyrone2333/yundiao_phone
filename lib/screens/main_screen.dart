@@ -4,7 +4,7 @@ import 'package:yundiao_phone/screens/chats.dart';
 import 'package:yundiao_phone/screens/friends.dart';
 import 'package:yundiao_phone/screens/home.dart';
 import 'package:yundiao_phone/screens/notifications.dart';
-import 'package:yundiao_phone/screens/profile/profile.dart';
+import 'package:yundiao_phone/screens/profile.dart';
 import 'package:yundiao_phone/widgets/icon_badge.dart';
 
 class MainScreen extends StatefulWidget {
