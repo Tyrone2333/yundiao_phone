@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport'
+        content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="a" id="app_button">
+        app_button
+    </div>
+
+    <div class="a" id="open_app">
+        open_app
+    </div>
+
+    <div class="a" id="download_upgrade">
+        download_upgrade
+    </div>
+
+
+
+    <script>
+        let mui = {
+            os: {
+                android: true
+            }
+        }
+        var userAgent = window.navigator.userAgent;
+        if (userAgent.match(/yundiao/) == null) { //当用户在浏览器中打开时
+            console.log(document.getElementById("app_button"));
+
+            document.getElementById("app_button").style.display = "block"; //下载打开按钮显示出来
+            if (userAgent.match(/MicroMessenger/) != null) { //用微信扫描时
+                document.getElementById("weixin").style.display = "block";
+                //下面根据不同的手机显示不同的提示语
+                if (mui.os.ios) {
+                    document.getElementById("addroid_weixin").style.display = "none";
+                    document.getElementById("ios_weixin").style.display = "inline";
+                } else if (mui.os.android) {
+                    document.getElementById("ios_weixin").style.display = "none";
+                    document.getElementById("addroid_weixin").style.display = "inline";
+                }
+                document.getElementById("app_button").style.display = "none";
+            }
+        }
+        var parameter = window.location.href;
+        var ios_parmeter = parameter.substring(7, parameter.length);
+        document.getElementById("open_app").addEventListener('click', function () {
+            console.log('open',);
+
+            if (mui.os.ios) {
+                window.location.href = "打开IOS的名字://" + ios_parmeter;
+            } else if (mui.os.android) {
+                window.location.href = "yundiao://yundiao.com/android?data=" + parameter;
+            }
+        });
+        document.getElementById("download_upgrade").addEventListener('click', function () {
+            if (mui.os.ios) {
+                //跳转IOS下载商城地址
+                window.location.href = "https://itunes.apple.com/cn/app/";
+            } else if (mui.os.android) {
+                var downLoad = '@ViewBag.downLoad';
+                window.location.href = "android的下载地址";
+            }
+        })
+    </script>
+</body>
+
+</html>

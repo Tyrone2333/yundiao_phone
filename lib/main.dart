@@ -140,7 +140,7 @@ class _MyAppState extends State<MyApp> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       initialUri = await getInitialUri();
-      print('initial uri: ${initialUri?.path}'
+      print('初始化 uri: ${initialUri?.path}'
           ' ${initialUri?.queryParametersAll}');
       initialLink = initialUri?.toString();
     } on PlatformException {
