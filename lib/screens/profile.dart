@@ -90,18 +90,22 @@ class _ProfileState extends State<Profile> {
                 height: ScreenUtil().setHeight(350),
                 child: Stack(
                   children: <Widget>[
-                    Positioned.fill(child: AnimatedBackground()),
+                    // 填充背景,不使用动画
+//                    Positioned.fill(child: AnimatedBackground()),
+                    Positioned.fill(child: Container(
+                      color: Color(0xfffd7e2b),
+                    )),
                     onBottom(AnimatedWave(
-                      height: 180,
+                      height: 60,
                       speed: 1.0,
                     )),
                     onBottom(AnimatedWave(
-                      height: 120,
+                      height: 140,
                       speed: 0.9,
                       offset: pi,
                     )),
                     onBottom(AnimatedWave(
-                      height: 220,
+                      height: 80,
                       speed: 1.2,
                       offset: pi / 2,
                     )),

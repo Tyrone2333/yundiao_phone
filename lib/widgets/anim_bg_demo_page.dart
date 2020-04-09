@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations/controlled_animation.dart';
 import 'package:simple_animations/simple_animations/multi_track_tween.dart';
+import 'package:yundiao_phone/util/color_utils.dart';
 
 class AnimBgDemoPage extends StatelessWidget {
   @override
@@ -85,7 +86,9 @@ class CurvePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final white = Paint()..color = Colors.white.withAlpha(60);
+//    final white = Paint()..color = ColorUtils.lightAccent.withAlpha(60);
+//    final white = Paint()..color = Color(0xfffd8c41) ;
+    final white = Paint()..color = Colors.white.withAlpha(20);
     final path = Path();
 
     final y1 = sin(value);

@@ -39,9 +39,8 @@ class _MyAppState extends State<MyApp> {
       statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
     ));
 
-    initPlatformState();
-    initJPush();
-//    initUniLinks();
+//    initPlatformState();
+//    initJPush();
   }
 
   // Platform messages are asynchronous, so we initialize in an async method.
@@ -173,6 +172,7 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
+// 初始化极光
 initJPush() {
   JPush jpush = new JPush();
   jpush.addEventHandler(
