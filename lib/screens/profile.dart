@@ -8,6 +8,7 @@ import 'package:yundiao_phone/screens/login.dart';
 import 'package:yundiao_phone/util/Constants.dart';
 import 'package:yundiao_phone/util/color_utils.dart';
 import 'package:yundiao_phone/util/data.dart';
+import 'package:yundiao_phone/util/global_function.dart';
 import 'package:yundiao_phone/widgets/anim_bg_demo_page.dart';
 import 'package:yundiao_phone/widgets/argon_buttons_flutter.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -32,6 +33,16 @@ class _ProfileState extends State<Profile> {
     }
   }
 
+  // 提现按钮
+  handleWithDrawal(startLoading, stopLoading, btnState) async {
+
+    $warn('提现');
+
+    $confirm('确认?', context, btnOkOnPress: () {
+      print('ok');
+    });
+  }
+
   onBottom(Widget child) => Positioned.fill(
         child: Align(
           alignment: Alignment.bottomCenter,
@@ -52,7 +63,6 @@ class _ProfileState extends State<Profile> {
 
   @override
   Widget build(BuildContext context) {
-
     var navList = [
       {'icon': "assets/img/user/nav1.png", 'text': '接单盈利'},
       {'icon': "assets/img/user/nav2.png", 'text': '我的订单'},
@@ -181,10 +191,7 @@ class _ProfileState extends State<Profile> {
                                   color: Colors.white,
                                 ),
                               ),
-                              onTap:
-                                  (startLoading, stopLoading, btnState) async {
-                                print('提现');
-                              },
+                              onTap: handleWithDrawal,
                             ),
                           ],
                         ),

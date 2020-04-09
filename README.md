@@ -2,18 +2,11 @@
 
 A new Flutter project.
 
-## Getting Started
+# TODO
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- 极光 ios 集成
+  在 xcode8 之后需要点开推送选项： TARGETS -> Capabilities -> Push Notification 设为 on 状态
+- 
 
 # 还原设计稿
 [flutter_screenutil](https://github.com/OpenFlutter/flutter_screenutil/blob/master/README_CN.md)
@@ -83,3 +76,9 @@ Container(
 ```
 adb shell am start -W -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d "yundiao://yundiao.com/home?pp=big\&uid=123&token=abc"
 ```
+
+# 常见错误处理
+##  集成插件后报错 MissingPluginException
+例如 `MissingPluginException(No implementation found for method showToast on channel PonnamKarthik/fluttertoast)`
+
+先执行`flutter clean`,关闭当前任务,重新 `flutter run` 打包安装
