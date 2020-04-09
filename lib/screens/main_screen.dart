@@ -3,10 +3,13 @@ import 'package:flutter_screenutil/screenutil.dart';
 import 'package:yundiao_phone/screens/chats.dart';
 import 'package:yundiao_phone/screens/friends.dart';
 import 'package:yundiao_phone/screens/home.dart';
-import 'package:yundiao_phone/screens/login.dart';
+import 'package:yundiao_phone/screens/login/login.dart';
 import 'package:yundiao_phone/screens/notifications.dart';
 import 'package:yundiao_phone/screens/profile.dart';
+import 'package:yundiao_phone/screens/viewpager_demo_page.dart';
 import 'package:yundiao_phone/widgets/icon_badge.dart';
+
+import 'NestedScrollViewPage.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -15,7 +18,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   PageController _pageController;
-  int _page = 4;
+  int _page = 0;
 
   @override
   void initState() {
@@ -40,12 +43,15 @@ class _MainScreenState extends State<MainScreen> {
         controller: _pageController,
         onPageChanged: onPageChanged,
         children: <Widget>[
-          Chats(),
-          Friends(),
-          Home(),
-//          Notifications(),
           Login(),
+          Friends(),
+          ViewPagerDemoPage(),
+          NestedScrollViewPage(),
           Profile(),
+          Notifications(),
+          Chats(),
+
+          Home(),
         ],
       ),
       bottomNavigationBar: Theme(

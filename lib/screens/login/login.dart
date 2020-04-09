@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:yundiao_phone/widgets/argon_buttons_flutter.dart';
 import 'package:yundiao_phone/widgets/icon_badge.dart';
+import 'package:yundiao_phone/screens/login/login_role_switcher.dart';
 import 'package:yundiao_phone/widgets/rounded_loading_button.dart';
 
 import 'package:yundiao_phone/util/data.dart';
@@ -18,6 +19,8 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final RoundedLoadingButtonController _btnController =
       new RoundedLoadingButtonController();
+
+  String currentRole = '媒体主';
 
   void _doSomething() async {
     Timer(Duration(seconds: 1), () {
@@ -80,6 +83,13 @@ class _LoginState extends State<Login> {
                   width: ScreenUtil().setWidth(245),
                   height: ScreenUtil().setHeight(213),
                 ),
+              ),
+
+              LoginRoleSwitcher(
+                role: currentRole,
+                onRoleChange: (res) => setState(() {
+                  currentRole = res;
+                }),
               ),
 
               // 请输入手机号码 输入框

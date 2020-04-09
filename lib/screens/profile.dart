@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:yundiao_phone/screens/login.dart';
+import 'package:yundiao_phone/screens/login/login.dart';
 import 'package:yundiao_phone/util/Constants.dart';
 import 'package:yundiao_phone/util/color_utils.dart';
 import 'package:yundiao_phone/util/data.dart';
