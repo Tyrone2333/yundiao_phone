@@ -84,18 +84,19 @@ class _LoginState extends State<Login> {
 
               // 请输入手机号码 输入框
               Container(
-                padding:   EdgeInsets.only(
-//                  top: ScreenUtil().setWidth(45),
+                height: ScreenUtil().setHeight(105),
+                padding: EdgeInsets.only(
+                  top: ScreenUtil().setHeight(17),
                 ),
                 decoration: BoxDecoration(
-                  // 输入框底部的线
+                    // 输入框底部的线
                     border: Border(
                         bottom:
                             BorderSide(width: 1, color: Color(0xffe5e5e5)))),
                 child: Row(
                   children: <Widget>[
                     Padding(
-                      padding:   EdgeInsets.only(
+                      padding: EdgeInsets.only(
                         left: ScreenUtil().setWidth(9),
                       ),
                       child: Image.asset(
@@ -120,9 +121,8 @@ class _LoginState extends State<Login> {
 //                         ),
 //                          contentPadding: const EdgeInsets.symmetric(vertical: 10.0),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5.0),
-                              borderSide: BorderSide.none
-                          ),
+                              borderRadius: BorderRadius.circular(5.0),
+                              borderSide: BorderSide.none),
 //                          enabledBorder: OutlineInputBorder(
 //                            borderSide: BorderSide(
 //                              color: Theme.of(context).accentColor,
@@ -142,21 +142,21 @@ class _LoginState extends State<Login> {
                 ),
               ),
 
-
-            // 请输入密码 输入框
+              // 请输入密码 输入框
               Container(
-                padding:   EdgeInsets.only(
-//                  top: ScreenUtil().setWidth(45),
+                height: ScreenUtil().setHeight(133),
+                padding: EdgeInsets.only(
+                  top: ScreenUtil().setWidth(45),
                 ),
                 decoration: BoxDecoration(
-                  // 输入框底部的线
+                    // 输入框底部的线
                     border: Border(
                         bottom:
                             BorderSide(width: 1, color: Color(0xffe5e5e5)))),
                 child: Row(
                   children: <Widget>[
                     Padding(
-                      padding:   EdgeInsets.only(
+                      padding: EdgeInsets.only(
                         left: ScreenUtil().setWidth(9),
                       ),
                       child: Image.asset(
@@ -181,9 +181,8 @@ class _LoginState extends State<Login> {
 //                         ),
 //                          contentPadding: const EdgeInsets.symmetric(vertical: 10.0),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5.0),
-                              borderSide: BorderSide.none
-                          ),
+                              borderRadius: BorderRadius.circular(5.0),
+                              borderSide: BorderSide.none),
 //                          enabledBorder: OutlineInputBorder(
 //                            borderSide: BorderSide(
 //                              color: Theme.of(context).accentColor,
@@ -202,8 +201,6 @@ class _LoginState extends State<Login> {
                   ],
                 ),
               ),
-
-
 
               // 密码
 
