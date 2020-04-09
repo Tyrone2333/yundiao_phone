@@ -44,8 +44,8 @@ class _MainScreenState extends State<MainScreen> {
           Friends(),
           Home(),
 //          Notifications(),
-          Profile(),
           Login(),
+          Profile(),
         ],
       ),
       bottomNavigationBar: Theme(

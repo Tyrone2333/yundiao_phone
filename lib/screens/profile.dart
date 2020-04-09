@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:yundiao_phone/screens/login.dart';
 import 'package:yundiao_phone/util/Constants.dart';
 import 'package:yundiao_phone/util/color_utils.dart';
@@ -20,6 +21,17 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   static Random random = Random();
 
+  _launchURL() async {
+    // todo getPackageName 获取包名
+    const url = 'market://details?id=com.tmall.wireless';
+//    const url = 'yundiao://yundiao.com/home?pp=big\&uid=123&token=abc';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   onBottom(Widget child) => Positioned.fill(
         child: Align(
           alignment: Alignment.bottomCenter,
@@ -31,7 +43,7 @@ class _ProfileState extends State<Profile> {
     print('handleLogout');
     Navigator.of(context, rootNavigator: true).push(
       MaterialPageRoute(
-        builder: (BuildContext context){
+        builder: (BuildContext context) {
           return Login();
         },
       ),
@@ -305,6 +317,23 @@ class _ProfileState extends State<Profile> {
                   child: Center(
                     child: Text(
                       '安全退出',
+                      style: TextStyle(
+                          fontSize: ScreenUtil().setSp(30),
+                          color: Color(0xff333333)),
+                    ),
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: _launchURL,
+                child: Container(
+                  width: ScreenUtil().setWidth(750),
+                  height: ScreenUtil().setHeight(90),
+                  color: Colors.white,
+                  margin: EdgeInsets.only(top: ScreenUtil().setHeight(60)),
+                  child: Center(
+                    child: Text(
+                      '打开商店',
                       style: TextStyle(
                           fontSize: ScreenUtil().setSp(30),
                           color: Color(0xff333333)),

@@ -17,6 +17,7 @@ class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
 }
+
 enum UniLinksType { string, uri }
 
 class _MyAppState extends State<MyApp> {
@@ -28,7 +29,6 @@ class _MyAppState extends State<MyApp> {
 
   UniLinksType _type = UniLinksType.uri;
 
-
   @override
   void initState() {
     super.initState();
@@ -39,7 +39,6 @@ class _MyAppState extends State<MyApp> {
     ));
 
     initPlatformState();
-
 //    initUniLinks();
   }
 
