@@ -10,6 +10,7 @@ import 'package:yundiao_phone/screens/login/login_role_switcher.dart';
 import 'package:yundiao_phone/widgets/rounded_loading_button.dart';
 
 import 'package:yundiao_phone/util/data.dart';
+import 'package:yundiao_phone/widgets/appbar/sample_appbar.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -35,35 +36,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-//          设计图的太细了
-          icon: Image.asset(
-            'assets/img/goback.png',
-            width: ScreenUtil().setWidth(20),
-            height: ScreenUtil().setHeight(34),
-          ),
-//          icon: Icon(
-//            Icons.arrow_back_ios,
-//            size: ScreenUtil().setWidth(32),
-//          ),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-//        leading: Icon(Icons.add),
-        title: Text(
-          "用户登录",
-          style: TextStyle(
-              color: Theme.of(context).primaryColor,
-              fontSize: ScreenUtil().setSp(36),
-              fontWeight: FontWeight.normal),
-        ),
-        centerTitle: true,
-        iconTheme: IconThemeData(
-          color: Theme.of(context).primaryColor,
-        ),
-        backgroundColor: Theme.of(context).accentColor,
-        brightness: Brightness.dark,
-      ),
+      appBar: sampleAppBar(context: context, title: "用户登录"),
       body: SingleChildScrollView(
         child: Container(
           width: MediaQuery.of(context).size.width,
