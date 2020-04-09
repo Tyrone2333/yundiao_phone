@@ -229,30 +229,58 @@ class _LoginState extends State<Login> {
               ),
 
               // todo 微信的渐变横线
+              SizedBox(
+                height: ScreenUtil().setHeight(100),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Container(
+                    width: ScreenUtil().setWidth(216),
+                    height: ScreenUtil().setHeight(2),
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            begin: Alignment.centerRight,
+                            end: Alignment.centerLeft,
+//                        stops: [0.3, 0.5 ],
+                            colors: [Color(0xffeaeaea), Color(0xfff4f4f4)])),
+                  ),
+                  Container(
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset(
+                          'assets/img/login/wechat.png',
+                          width: ScreenUtil().setWidth(120),
+                          height: ScreenUtil().setWidth(120),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    width: ScreenUtil().setWidth(216),
+                    height: ScreenUtil().setHeight(2),
+                    decoration: BoxDecoration(gradient: LinearGradient(
+//                        begin: Alignment.center,
+//                        end: Alignment(1,0),
+//                        stops: [0.3, 0.5 ],
+                        colors: [Color(0xffe7e7e7), Color(0xfffafafa)])),
+                  ),
+                ],
+              ),
               Container(
-                padding: EdgeInsets.only(
-                  top: ScreenUtil().setHeight(100),
+                margin: EdgeInsets.only(
+                  top: ScreenUtil().setHeight(30),
                   bottom: ScreenUtil().setHeight(100),
                 ),
-                child: Column(
-                  children: <Widget>[
-                    Image.asset(
-                      'assets/img/login/wechat.png',
-                      width: ScreenUtil().setWidth(120),
-                      height: ScreenUtil().setWidth(120),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(
-                        top: ScreenUtil().setHeight(30),
-                      ),
-                      child: Text('微信登录',
-                          style: TextStyle(
-                            color: Color(0xff333333),
-                            fontSize: ScreenUtil().setSp(28),
-                          )),
-                    ),
-                  ],
-                ),
+//                padding: EdgeInsets.only(
+//                  top: ScreenUtil().setHeight(100),
+//                  bottom: ScreenUtil().setHeight(100),
+//                ),
+                child: Text('微信登录',
+                    style: TextStyle(
+                      color: Color(0xff333333),
+                      fontSize: ScreenUtil().setSp(28),
+                    )),
               ),
 
               // 按钮变✔
