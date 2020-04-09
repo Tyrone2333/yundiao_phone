@@ -52,7 +52,6 @@ class _ProfileState extends State<Profile> {
 
   @override
   Widget build(BuildContext context) {
-    print(ScreenUtil.statusBarHeight);
 
     var navList = [
       {'icon': "assets/img/user/nav1.png", 'text': '接单盈利'},

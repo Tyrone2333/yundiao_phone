@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:jpush_flutter/jpush_flutter.dart';
 import 'package:yundiao_phone/screens/main_screen.dart';
 import 'package:yundiao_phone/util/color_utils.dart';
 
@@ -39,9 +40,9 @@ class _MyAppState extends State<MyApp> {
     ));
 
     initPlatformState();
+    initJPush();
 //    initUniLinks();
   }
-
 
   // Platform messages are asynchronous, so we initialize in an async method.
   initPlatformState() async {
@@ -170,4 +171,31 @@ class _MyAppState extends State<MyApp> {
       home: MainScreen(),
     );
   }
+}
+
+initJPush() {
+  JPush jpush = new JPush();
+  jpush.addEventHandler(
+    // 接收通知回调方法。
+    onReceiveNotification: (Map<String, dynamic> message) async {
+      print("极光接收通知回调: $message");
+    },
+    // 点击通知回调方法。
+    onOpenNotification: (Map<String, dynamic> message) async {
+      print("极光点击通知回调: $message");
+    },
+    // 接收自定义消息回调方法。
+    onReceiveMessage: (Map<String, dynamic> message) async {
+      print("极光接收自定义消息回调: $message");
+    },
+  );
+  jpush.setup(
+    appKey: "3e41a1fe13408e95499aad99",
+    channel: "default",
+    production: false,
+    debug: false, // 设置是否打印 debug 日志
+  );
+  jpush.getRegistrationID().then((rid) {
+    print('获取到 RegistrationID: $rid');
+  });
 }
