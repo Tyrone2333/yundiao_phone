@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:yundiao_phone/widgets/argon_buttons_flutter.dart';
@@ -11,6 +12,7 @@ import 'package:yundiao_phone/widgets/rounded_loading_button.dart';
 
 import 'package:yundiao_phone/util/data.dart';
 import 'package:yundiao_phone/widgets/appbar/sample_appbar.dart';
+import 'package:yundiao_phone/widgets/sample_input.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -23,6 +25,9 @@ class _LoginState extends State<Login> {
 
   String currentRole = '媒体主';
 
+  var textController = new TextEditingController();
+  var pwd = '';
+
   void _doSomething() async {
     Timer(Duration(seconds: 1), () {
       _btnController.success();
@@ -31,6 +36,18 @@ class _LoginState extends State<Login> {
 //        _btnController. stop();
       });
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    textController.dispose();
+    super.dispose();
   }
 
   @override
@@ -124,68 +141,24 @@ class _LoginState extends State<Login> {
                   ],
                 ),
               ),
-
-              // 请输入密码 输入框
-              Container(
-                height: ScreenUtil().setHeight(133),
-                padding: EdgeInsets.only(
-                  top: ScreenUtil().setWidth(45),
-                ),
-                decoration: BoxDecoration(
-                    // 输入框底部的线
-                    border: Border(
-                        bottom:
-                            BorderSide(width: 1, color: Color(0xffe5e5e5)))),
-                child: Row(
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(
-                        left: ScreenUtil().setWidth(9),
-                      ),
-                      child: Image.asset(
-                        'assets/img/login/pwd.png',
-                        width: ScreenUtil().setWidth(42),
-                        height: ScreenUtil().setWidth(50),
-                      ),
-                    ),
-                    Flexible(
-                      child: TextField(
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          color: Theme.of(context).textTheme.title.color,
-                        ),
-                        decoration: InputDecoration(
-                          // 设置的是 only,但是上下都会改变
-//                         contentPadding: EdgeInsets.only(
-////                           left: ScreenUtil().setWidth(13),
-//                           top: ScreenUtil().setWidth(150),
-////                           right: ScreenUtil().setWidth(13),
-////                           bottom: ScreenUtil().setWidth(13),
-//                         ),
-//                          contentPadding: const EdgeInsets.symmetric(vertical: 10.0),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(5.0),
-                              borderSide: BorderSide.none),
-//                          enabledBorder: OutlineInputBorder(
-//                            borderSide: BorderSide(
-//                              color: Theme.of(context).accentColor,
-//                            ),
-//                            borderRadius: BorderRadius.circular(5.0),
-//                          ),
-                          hintText: "请输入密码",
-                          hintStyle: TextStyle(
-                            fontSize: ScreenUtil().setSp(26),
-                            color: Color(0xff999999),
-                          ),
-                        ),
-                        maxLines: 1,
-                      ),
-                    ),
-                  ],
-                ),
+              SampleInput(
+                placeholder: '请输入手机号码',
+                icon: 'assets/img/login/user.png',
+                initValue: pwd,
+                onTextChange: (text) {
+                  pwd = text;
+                },
               ),
 
-              // 密码
+              // 请输入密码 输入框
+              SampleInput(
+                placeholder: '请输入密码',
+                icon: 'assets/img/login/pwd.png',
+                initValue: pwd,
+                onTextChange: (text) {
+                  pwd = text;
+                },
+              ),
 
               // 找回密码？立即注册
               Container(
@@ -219,16 +192,18 @@ class _LoginState extends State<Login> {
                     startLoading();
 //                      await doNetworkRequest();
                     // 延时1s执行返回
-                    await Future.delayed(Duration(seconds: 2), () {
+                    await Future.delayed(Duration(seconds: 1), () {
 //                        Navigator.of(context).pop();
                       print('延时1s执行');
                     });
+                    print('当前 pwd : ${pwd}');
+
+                    textController.text = '13546';
                     stopLoading();
                   }
                 },
               ),
-
-              // todo 微信的渐变横线
+              Text(textController.text),
               SizedBox(
                 height: ScreenUtil().setHeight(100),
               ),

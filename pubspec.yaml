@@ -32,12 +32,14 @@ dependencies:
   uni_links: ^0.2.0
   # 跳转 app/网站 等
   url_launcher: ^5.4.2
-  #  极光推送
+  # 极光推送
   jpush_flutter: 0.5.3
   fluttertoast: ^4.0.0
   transformer_page_view: ^0.1.6
   flutter_easyrefresh: ^2.1.0
   extended_nested_scroll_view: ^0.4.0
+  # 网络请求
+  dio: ^3.0.9
 
 dev_dependencies:
   flutter_test:
