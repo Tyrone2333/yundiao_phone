@@ -13,6 +13,7 @@ import 'package:yundiao_phone/widgets/rounded_loading_button.dart';
 import 'package:yundiao_phone/util/data.dart';
 import 'package:yundiao_phone/widgets/appbar/sample_appbar.dart';
 import 'package:yundiao_phone/widgets/sample_input.dart';
+import 'package:yundiao_phone/widgets/timer_count_down.dart';
 
 class Register extends StatefulWidget {
   @override
@@ -109,6 +110,14 @@ class _RegisterState extends State<Register> {
                     pwd = text;
                   });
                 },
+                suffixIcon: Container(
+                  // 只有这样才能设置宽高
+                  width: ScreenUtil().setWidth(160),
+                  alignment: Alignment(-0.5, 0.0),
+                  child: TimerCountDownWidget(onTap: (countdownTime) {
+                    print('countdownTime $countdownTime');
+                  }),
+                ),
               ),
 
               // 请输入密码 输入框
@@ -122,16 +131,29 @@ class _RegisterState extends State<Register> {
                   });
                 },
               ),
-              Container(
-                padding: EdgeInsets.symmetric(
-                  vertical: ScreenUtil().setHeight(34),
-                ),
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      checked = !checked;
-                    });
-                  },
+              // 确认密码 输入框
+              SampleInput(
+                placeholder: '确认密码',
+                icon: 'assets/img/login/pwd.png',
+                initValue: pwd,
+                onTextChange: (text) {
+                  setState(() {
+                    pwd = text;
+                  });
+                },
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    checked = !checked;
+                  });
+                },
+                child: Container(
+                  // 加大可操作面积
+                  color: Color(0x00cccccc),
+                  padding: EdgeInsets.symmetric(
+                    vertical: ScreenUtil().setHeight(34),
+                  ),
                   child: Flex(
                     direction: Axis.horizontal,
 //                  mainAxisAlignment: MainAxisAlignment.center,
