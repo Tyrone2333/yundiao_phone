@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil.dart';
+import 'dart:async';
+
+import 'package:yundiao_phone/widgets/timer_count_down.dart';
 
 class SampleInput extends StatefulWidget {
   /// 只能初始化时候变更
@@ -7,6 +10,7 @@ class SampleInput extends StatefulWidget {
   final placeholder;
   final String icon;
   final Function onTextChange;
+  final Widget suffixIcon;
 
   /// 图标宽度,设计稿的像素
   final iconWidth;
@@ -16,6 +20,7 @@ class SampleInput extends StatefulWidget {
     this.placeholder,
     this.icon,
     this.onTextChange,
+    this.suffixIcon,
     this.iconWidth = 42,
   });
 
@@ -89,7 +94,7 @@ class _SampleInputState extends State<SampleInput> {
             color: Color(0xff999999),
           ),
           // icon 是在输入框的外部
-//                          icon: new Icon(Icons.people),
+          // icon: new Icon(Icons.people),
           // prefixIcon 是在输入框的内部,前缀图标的最小尺寸为48px x 48px,直接传入一个 Image.asset 尺寸会无法设置
           prefixIcon: Container(
             width: 0,
@@ -100,10 +105,9 @@ class _SampleInputState extends State<SampleInput> {
               height: ScreenUtil().setWidth(50),
             ),
           ),
-//                            prefixStyle: TextStyle(
-//                              width: ScreenUtil().setWidth(42),
-//                              height: ScreenUtil().setWidth(50),
-//                            )
+
+          // 后缀图标 是在输入框的内部
+          suffixIcon: widget.suffixIcon,
         ),
       ),
     );
