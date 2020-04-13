@@ -7,6 +7,7 @@ import 'package:yundiao_phone/screens/login/login.dart';
 import 'package:yundiao_phone/screens/login/register.dart';
 import 'package:yundiao_phone/screens/notifications.dart';
 import 'package:yundiao_phone/screens/profile.dart';
+import 'package:yundiao_phone/screens/stepper_page.dart';
 import 'package:yundiao_phone/screens/viewpager_demo_page.dart';
 import 'package:yundiao_phone/widgets/icon_badge.dart';
 
@@ -44,6 +45,7 @@ class _MainScreenState extends State<MainScreen> {
         controller: _pageController,
         onPageChanged: onPageChanged,
         children: <Widget>[
+          StepperPage(),
           Register(),
           Login(),
           Profile(),

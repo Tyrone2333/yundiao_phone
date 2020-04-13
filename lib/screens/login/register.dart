@@ -2,15 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/screenutil.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:yundiao_phone/widgets/argon_buttons_flutter.dart';
-import 'package:yundiao_phone/widgets/icon_badge.dart';
 import 'package:yundiao_phone/screens/login/login_role_switcher.dart';
 import 'package:yundiao_phone/widgets/rounded_loading_button.dart';
 
-import 'package:yundiao_phone/util/data.dart';
 import 'package:yundiao_phone/widgets/appbar/sample_appbar.dart';
 import 'package:yundiao_phone/widgets/sample_input.dart';
 import 'package:yundiao_phone/widgets/timer_count_down.dart';
