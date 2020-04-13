@@ -21,6 +21,7 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   static Random random = Random();
+  var userInfo = {'type': '媒体主'};
 
   _launchURL() async {
     // todo getPackageName 获取包名
@@ -35,11 +36,13 @@ class _ProfileState extends State<Profile> {
 
   // 提现按钮
   handleWithDrawal(startLoading, stopLoading, btnState) async {
-
     $warn('提现');
 
-    $confirm('确认?', context, btnOkOnPress: () {
+    $confirm('切换角色确认?', context, btnOkOnPress: () {
       print('ok');
+      setState(() {
+        userInfo['type'] = userInfo['type'] == '广告主' ? '媒体主' : '广告主';
+      });
     });
   }
 
@@ -64,10 +67,12 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     var navList = [
-      {'icon': "assets/img/user/nav1.png", 'text': '接单盈利'},
+      userInfo['type'] == '媒体主'
+          ? {'icon': "assets/img/user/nav1-2.png", 'text': '接单盈利'}
+          : {'icon': "assets/img/user/nav6.png", 'text': '我的任务'},
       {'icon': "assets/img/user/nav2.png", 'text': '我的订单'},
+      {'icon': "assets/img/user/nav4-2.png", 'text': '财务管理'},
       {'icon': "assets/img/user/nav3.png", 'text': '账户设置'},
-      {'icon': "assets/img/user/nav4.png", 'text': '财务管理'},
       {'icon': "assets/img/user/nav5.png", 'text': '我的客服'},
     ];
     return Scaffold(
@@ -92,7 +97,8 @@ class _ProfileState extends State<Profile> {
                   children: <Widget>[
                     // 填充背景,不使用动画
 //                    Positioned.fill(child: AnimatedBackground()),
-                    Positioned.fill(child: Container(
+                    Positioned.fill(
+                        child: Container(
                       color: Color(0xfffd7e2b),
                     )),
                     onBottom(AnimatedWave(
@@ -158,7 +164,7 @@ class _ProfileState extends State<Profile> {
                                           CrossAxisAlignment.start,
                                       children: <Widget>[
                                         Text(
-                                          '云貂',
+                                          userInfo['type'],
                                           style: TextStyle(
                                             fontSize: ScreenUtil().setSp(34),
                                             height: 2,
@@ -183,7 +189,7 @@ class _ProfileState extends State<Profile> {
                               borderRadius: ScreenUtil().setWidth(5),
                               color: Color(0xFFffffff),
                               child: Text(
-                                "提现",
+                                "切换",
                                 style: TextStyle(
                                   color: Theme.of(context).accentColor,
                                   fontSize: ScreenUtil().setSp(28),
