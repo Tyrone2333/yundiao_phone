@@ -212,6 +212,9 @@ class _RegisterState extends State<Register> {
                   }
                 },
               ),
+
+              // 总高度没有一屏,在底部填充一个空盒子高度,否则上面按钮的阴影会被截断
+              SizedBox(height: ScreenUtil().setHeight(10)),
             ],
           ),
         ),
