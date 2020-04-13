@@ -44,7 +44,7 @@ class _SampleInputState extends State<SampleInput> {
           border:
               Border(bottom: BorderSide(width: 1, color: Color(0xffe5e5e5)))),
       child: TextField(
-        autofocus: true,
+//        autofocus: true,
         controller: textController,
         onChanged: (text) {
           //内容改变的回调

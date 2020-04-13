@@ -4,6 +4,7 @@ import 'package:yundiao_phone/screens/chats.dart';
 import 'package:yundiao_phone/screens/friends.dart';
 import 'package:yundiao_phone/screens/home.dart';
 import 'package:yundiao_phone/screens/login/login.dart';
+import 'package:yundiao_phone/screens/login/register.dart';
 import 'package:yundiao_phone/screens/notifications.dart';
 import 'package:yundiao_phone/screens/profile.dart';
 import 'package:yundiao_phone/screens/viewpager_demo_page.dart';
@@ -43,14 +44,16 @@ class _MainScreenState extends State<MainScreen> {
         controller: _pageController,
         onPageChanged: onPageChanged,
         children: <Widget>[
+          Register(),
           Login(),
-          Friends(),
+          Profile(),
           ViewPagerDemoPage(),
           NestedScrollViewPage(),
-          Profile(),
           Notifications(),
           Chats(),
           Home(),
+          Friends(),
+
         ],
       ),
       bottomNavigationBar: Theme(

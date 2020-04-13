@@ -14,12 +14,12 @@ import 'package:yundiao_phone/util/data.dart';
 import 'package:yundiao_phone/widgets/appbar/sample_appbar.dart';
 import 'package:yundiao_phone/widgets/sample_input.dart';
 
-class Login extends StatefulWidget {
+class Register extends StatefulWidget {
   @override
-  _LoginState createState() => _LoginState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _LoginState extends State<Login> {
+class _RegisterState extends State<Register> {
   final RoundedLoadingButtonController _btnController =
       new RoundedLoadingButtonController();
 
@@ -27,6 +27,9 @@ class _LoginState extends State<Login> {
 
   var textController = new TextEditingController();
   var pwd = '';
+
+  // 用户协议勾选
+  var checked = false;
 
   void _doSomething() async {
     Timer(Duration(seconds: 1), () {
@@ -53,7 +56,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: sampleAppBar(context: context, title: "用户登录"),
+      appBar: sampleAppBar(context: context, title: "注册账号"),
       body: SingleChildScrollView(
         child: Container(
           width: MediaQuery.of(context).size.width,
@@ -85,14 +88,29 @@ class _LoginState extends State<Login> {
               // 请输入手机号码 输入框
               SampleInput(
                 placeholder: '请输入手机号码',
-                icon: 'assets/img/login/user.png',
+                icon: 'assets/img/register/icon-1.png',
                 initValue: pwd,
+                iconWidth: 46,
                 onTextChange: (text) {
                   setState(() {
                     pwd = text;
                   });
                 },
               ),
+
+              // 请输入验证码 输入框
+              SampleInput(
+                placeholder: '请输入验证码',
+                icon: 'assets/img/register/icon-4.png',
+                initValue: pwd,
+                iconWidth: 46,
+                onTextChange: (text) {
+                  setState(() {
+                    pwd = text;
+                  });
+                },
+              ),
+
               // 请输入密码 输入框
               SampleInput(
                 placeholder: '请输入密码',
@@ -104,34 +122,80 @@ class _LoginState extends State<Login> {
                   });
                 },
               ),
-
-              // 找回密码？立即注册
               Container(
-                padding: EdgeInsets.only(
-                  top: ScreenUtil().setHeight(20),
-                  bottom: ScreenUtil().setHeight(60),
+                padding: EdgeInsets.symmetric(
+                  vertical: ScreenUtil().setHeight(34),
                 ),
-                child: DefaultTextStyle(
-                  style: TextStyle(
-                    fontSize: ScreenUtil().setSp(26),
-                    color: Color(0xff555555),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      checked = !checked;
+                    });
+                  },
+                  child: Flex(
+                    direction: Axis.horizontal,
+//                  mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text('找回密码？'),
-                      Text('立即注册'),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          top: ScreenUtil().setWidth(4),
+                          right: ScreenUtil().setWidth(22),
+                        ),
+                        child: Image.asset(
+                          checked
+                              ? 'assets/img/register/gou_on.png'
+                              : 'assets/img/register/gou.png',
+                          width: ScreenUtil().setWidth(32),
+                          height: ScreenUtil().setWidth(32),
+                        ),
+                      ),
+                      Expanded(
+                        child: RichText(
+                          text: TextSpan(
+                            style: TextStyle(
+                              fontSize: ScreenUtil().setSp(26),
+                              color: Color(0xff999999),
+                            ),
+//                      '我已阅读并同意',
+                            children: [
+                              TextSpan(text: '我已阅读并同意'),
+                              TextSpan(
+                                  text: '《云貂盈利平台用户注册协议》',
+                                  style: TextStyle(
+                                    color: Theme.of(context).accentColor,
+                                  )),
+                            ],
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
               ),
+//              Container(
+//                child: Row(
+//                  children: <Widget>[
+//                    Image.asset(
+//                      'assets/img/register/gou_on.png',
+//                      width: ScreenUtil().setWidth(32),
+//                      height: ScreenUtil().setWidth(32),
+//                    ),
+//                    Wrap(children: <Widget>[
+//                      Text('text 1'),
+//                      Text('我已阅读并同意《云貂盈利平台用户注册协议》'),
+//
+//                    ],),
+//                  ],
+//                ),
+//              ),
 
               // 可做登录
               ArgonButton(
                 width: ScreenUtil().setWidth(588),
                 // 按钮太矮在执行动画的时候会不够圆
                 height: ScreenUtil().setHeight(100),
-                text: '立即登录',
+                text: '立即注册',
                 onTap: (startLoading, stopLoading, btnState) async {
                   if (btnState == ButtonState.Idle) {
                     startLoading();
@@ -148,67 +212,6 @@ class _LoginState extends State<Login> {
                   }
                 },
               ),
-              Text(textController.text),
-              SizedBox(
-                height: ScreenUtil().setHeight(100),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Container(
-                    width: ScreenUtil().setWidth(216),
-                    height: ScreenUtil().setHeight(2),
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            begin: Alignment.centerRight,
-                            end: Alignment.centerLeft,
-//                        stops: [0.3, 0.5 ],
-                            colors: [Color(0xffeaeaea), Color(0xfff4f4f4)])),
-                  ),
-                  Container(
-                    child: Column(
-                      children: <Widget>[
-                        Image.asset(
-                          'assets/img/login/wechat.png',
-                          width: ScreenUtil().setWidth(120),
-                          height: ScreenUtil().setWidth(120),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: ScreenUtil().setWidth(216),
-                    height: ScreenUtil().setHeight(2),
-                    decoration: BoxDecoration(gradient: LinearGradient(
-//                        begin: Alignment.center,
-//                        end: Alignment(1,0),
-//                        stops: [0.3, 0.5 ],
-                        colors: [Color(0xffe7e7e7), Color(0xfffafafa)])),
-                  ),
-                ],
-              ),
-              Container(
-                margin: EdgeInsets.only(
-                  top: ScreenUtil().setHeight(30),
-                  bottom: ScreenUtil().setHeight(100),
-                ),
-//                padding: EdgeInsets.only(
-//                  top: ScreenUtil().setHeight(100),
-//                  bottom: ScreenUtil().setHeight(100),
-//                ),
-                child: Text('微信登录',
-                    style: TextStyle(
-                      color: Color(0xff333333),
-                      fontSize: ScreenUtil().setSp(28),
-                    )),
-              ),
-
-              // 按钮变✔
-//              RoundedLoadingButton(
-//                child: Text('Tap me!', style: TextStyle(color: Colors.white)),
-//                controller: _btnController,
-//                onPressed: _doSomething,
-//              ),
             ],
           ),
         ),
