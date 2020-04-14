@@ -212,7 +212,7 @@ class _RegisterState extends State<Register> {
               ArgonButton(
                 width: ScreenUtil().setWidth(588),
                 // 按钮太矮在执行动画的时候会不够圆
-                height: ScreenUtil().setHeight(100),
+                height: ScreenUtil().setWidth(100),
                 text: '立即注册',
                 onTap: (startLoading, stopLoading, btnState) async {
                   if (btnState == ButtonState.Idle) {

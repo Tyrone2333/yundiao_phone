@@ -32,9 +32,9 @@ A new Flutter project.
 
 根据屏幕宽度适配 width: ScreenUtil().setWidth(540),
 
-根据屏幕高度适配 height: ScreenUtil().setHeight(200),
+根据屏幕高度适配 height: ScreenUtil().setWidth(200),
 
-高度也根据setWidth来做适配可以保证不变形(当你想要一个正方形的时候)
+高度也根据setWidth来做适配可以保证不变形,不然在大于 16:9 的手机屏幕上会拉长
 
 setHeight方法主要是在高度上进行适配, 在你想控制UI上一屏的高度与实际中显示一样时使用.
 

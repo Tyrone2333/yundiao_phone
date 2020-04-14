@@ -24,7 +24,7 @@ class TimerCountDownWidgetState extends State<TimerCountDownWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: ScreenUtil().setWidth(160),
-      height: ScreenUtil().setHeight(60),
+      height: ScreenUtil().setWidth(60),
       child: OutlineButton(
         padding: EdgeInsets.all(0),
         highlightedBorderColor: Color(0xffCCCCCC),
