@@ -379,6 +379,7 @@ class _ProfileState extends State<Profile> {
 var styles = {
   'textFFF28': TextStyle(
     fontSize: ScreenUtil().setSp(28),
-    color: ColorUtils.lightPrimary,
+//    color: ColorUtils.lightPrimary,
+    color:  Color(0xffffffff),
   ),
 };

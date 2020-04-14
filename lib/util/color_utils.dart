@@ -4,7 +4,8 @@ class ColorUtils{
   static String appName = "Social app";
 
   //Colors for theme
-  static Color lightPrimary = Color(0xffffffff);
+//  static Color lightPrimary = Color(0xffffffff);
+  static Color lightPrimary = Color(0xfffe7115);
   static Color darkPrimary = Colors.black;
 //  static Color lightAccent = Colors.blue;
   // 底部 navbar / 顶部 appBar 主颜色
